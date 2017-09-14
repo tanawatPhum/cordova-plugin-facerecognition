@@ -1,0 +1,11 @@
+{
+  "name": "cordova-plugin-facerecognition",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-facerecognition",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}
