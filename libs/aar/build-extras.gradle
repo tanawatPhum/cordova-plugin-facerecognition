@@ -8,7 +8,6 @@ repositories {
         dirs 'libs/faceRec'
     }
 }
-
 ext.postBuildExtras = {
     android {
         compileOptions {
