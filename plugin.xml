@@ -35,12 +35,15 @@
              android:label="OpenCV">
           </activity>
         </config-file>
-        <source-file src="libs/aar/build-extras.gradle" target-dir="." />
-        <resource-file src="libs/aar/avafaceid-release.aar" target="libs/avafaceid-release.aar" />
-        <resource-file src="libs/aar/dlib-release.aar" target="libs/dlib-release.aar" />
-        <resource-file src="libs/android-async-http-1.3.1.jar" target="libs/android-async-http-1.3.1.jar" />
-        <resource-file src="libs/aar/opencv-release.aar" target="libs/opencv-release.aar" />
-        <resource-file src="libs/aar/pocketsphinx-android-5prealpha-release.aar" target="libs/pocketsphinx-android-5prealpha-release.aar" />
+        <!-- <source-file src="libs/aar/build-faceRecognition.gradle" target-dir="." /> -->
+        <framework src="libs/aar/build-extras.gradle" custom="true" type="gradleReference" />
+        <!-- <resource-file src="libs/aar/avafaceid-release.aar" target="libs/avafaceid-release.aar" />
+        <resource-file src="libs/aar/dlib-release.aar" target="libs/dlib-release.aar" /> -->
+        <resource-file src="libs/android-async-http-1.4.9.jar" target="libs/android-async-http-1.4.9.jar" />
+        <resource-file src="libs/httpclient-4.4.1.1.jar" target="libs/httpclient-4.4.1.1.jar" />
+        <!-- <resource-file src="libs/aar/opencv-release.aar" target="libs/opencv-release.aar" />
+        <resource-file src="libs/aar/pocketsphinx-android-5prealpha-release.aar" target="libs/pocketsphinx-android-5prealpha-release.aar" /> -->
+        <resource-file src="libs/aar/." target="libs/faceRec" />
         <!-- <source-file src="src/android/OpenCVActivity.java" target-dir="src/co/mwater/opencvactivity" /> -->
         <source-file src="src/android/OpenCVActivityPlugin.java" target-dir="src/com/opencvactivity" />
         <!--<source-file src="libs/armeabi/libopencvactivity.so" target-dir="libs/armeabi" />
