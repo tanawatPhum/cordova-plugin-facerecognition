@@ -2,10 +2,11 @@ dependencies {
     compile (name: 'avafaceid-release', ext: 'aar')
     compile (name: 'dlib-release', ext: 'aar')
     compile (name: 'pocketsphinx-android-5prealpha-release', ext: 'aar')
+    compile (name: 'opencv-release', ext: 'aar')
 }
 repositories {
     flatDir{
-        dirs 'libs/faceRec'
+        dirs 'libs'
     }
 }
 ext.postBuildExtras = {

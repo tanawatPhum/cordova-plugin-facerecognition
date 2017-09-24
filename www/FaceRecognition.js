@@ -6,10 +6,11 @@
 // };
 
 var FaceRecognition = function() {
-	var startRecognizer = function(success, error) {
+	var startRecognizer = function(url,success, error) {
+		console.log("facerecognition javascipt side");
 		if (cordova.exec)
 			cordova.exec(success, error, 'OpenCVActivityPlugin', 
-			   'process',["hello Java"]);
+			   'process',[url]);
 		else
 			error("Cordova not present");
 	};

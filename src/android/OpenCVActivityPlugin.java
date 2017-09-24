@@ -37,13 +37,7 @@ public class OpenCVActivityPlugin extends CordovaPlugin {
 			// Launch OpenCV
 			currentCallbackContext = callbackContext;
 			Intent intent = new Intent(cordova.getActivity(), ShootActivity.class);
-			// intent.putExtra("processId", args.getString(0));
-			// intent.putExtra("title", args.getString(2));
-			// JSONArray paramsJSON = args.getJSONArray(1);
-			// String[] params = new String[paramsJSON.length()];
-			// for (int i=0;i<params.length;i++)
-			// 	params[i]=paramsJSON.getString(i);
-			// intent.putExtra("processParams", params);
+			intent.putExtra("url", args.getString(0));
 			cordova.startActivityForResult(this, intent, REQUEST_OPENCV_ACTIVITY);
 			return true;
 		}
@@ -58,7 +52,6 @@ public class OpenCVActivityPlugin extends CordovaPlugin {
 				if (resultCode == Activity.RESULT_OK) {
 					byte[] bytesFace = intent.getByteArrayExtra("faceImg");
 					String result = intent.getStringExtra("result");
-					// String base64Face = Base64.encodeToString(bytesFace, Base64.DEFAULT);
 					File tempFile = File.createTempFile(bytesFace.toString(), ".jpg", null);
 					FileOutputStream fos = new FileOutputStream(tempFile);
 					fos.write(bytesFace);
