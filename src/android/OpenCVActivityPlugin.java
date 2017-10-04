@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
 import com.avalant.ai.avafaceid.views.ShootActivity;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 
 /*
@@ -50,15 +52,24 @@ public class OpenCVActivityPlugin extends CordovaPlugin {
 			// Call Javascript with results
 			try {
 				if (resultCode == Activity.RESULT_OK) {
-					byte[] bytesFace = intent.getByteArrayExtra("faceImg");
-					String result = intent.getStringExtra("result");
-					File tempFile = File.createTempFile(bytesFace.toString(), ".jpg", null);
-					FileOutputStream fos = new FileOutputStream(tempFile);
-					fos.write(bytesFace);
+//					byte[] faceUser = intent.getByteArrayExtra("faceUser");
+          String faceUser = intent.getStringExtra("faceUser");
+					String nameUser = intent.getStringExtra("nameUser");
+					String idUser = intent.getStringExtra("idUser");
+          Log.d("faceUser:",faceUser);
+
+//					File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".jpg", null);
+//
+//					FileOutputStream fos = new FileOutputStream(tempFile);
+//					fos.write(faceUser);
+//          fos.flush();
+//          fos.close();
+//          String encodedImage = Base64.encodeToString(faceUser, Base64.DEFAULT);
 					JSONObject res = new JSONObject();
-					res.put("result",result);
-					res.put("faceImg",tempFile);
-					res.put("faceImgOutput",fos);
+          			res.put("idUser",idUser);
+					res.put("nameUser",nameUser);
+					res.put("faceUser",faceUser);
+//					res.put("faceUserOutput",fos);
 					Log.d("Detect","callbackToClient");
 					currentCallbackContext.success(res);
 				}
@@ -66,11 +77,7 @@ public class OpenCVActivityPlugin extends CordovaPlugin {
 					currentCallbackContext.error("Request failed");
 			} catch (JSONException e) {
 				currentCallbackContext.error(e.getLocalizedMessage());
-			} catch (FileNotFoundException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+			}
     }
 	}
 }
